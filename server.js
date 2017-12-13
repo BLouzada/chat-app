@@ -4,13 +4,24 @@ const ejs = require('ejs')
 const http = require('http')
 const container = require('./container')
 
-container.resolve(() => {
-  const setupExpress = () => {
+container.resolve(function (users) {
+  const app = SetupExpress()
+
+  function SetupExpress () {
     const app = express()
     const server = http.createServer(app)
-    server.listen(3000, () => {
+    server.listen(3000, function () {
       console.log('listening on 3000')
     })
+    ConfigureExpress(app)
+    const router = require('express-promise-router')()
+    users.SetRouting(router)
+    app.use(router)
   }
-  const app = setupExpress()
+  function ConfigureExpress (app) {
+    app.use(express.static('public'))
+    app.set('view engine', 'ejs')
+    app.use(bodyParser.json())
+    app.use(bodyParser.urlencoded({ extended: true }))
+  }
 })
