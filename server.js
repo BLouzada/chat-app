@@ -29,6 +29,7 @@ container.resolve(function (users) {
     app.use(router)
   }
   function ConfigureExpress (app) {
+    require('./passport/passport-local')
     app.use(express.static('public'))
     app.use(cookieParser())
     app.set('view engine', 'ejs')
