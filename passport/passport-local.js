@@ -45,3 +45,23 @@ passport.use(
     }
   )
 )
+passport.use(
+  'local.login', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+  }, (req, email, password, done) => {
+    User.findOne({ email: email }, (error, user) => {
+      if (error) {
+        return done(error)
+      }
+      const messages = []
+      if (!user || !user.validUserPassword(password)) {
+        messages.push('Invalid username or password')
+        return done(null, false, req.flash('error', messages))
+      }
+      return done(null, user)
+    })
+  }
+  )
+)
