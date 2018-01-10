@@ -236,3 +236,55 @@ padding-left: 15px;
   background: #4aa1f3;
   color:white;
 }
+.btn-gplus{
+  background: #4aa1f3;
+  border-radius: 0;
+  color: white;
+  width: 100px;
+}
+.btn-gplus:link, .btn-gplus:visited{
+  color: white;
+  text-decoration: none;
+  background: #4aa1f3;
+}
+.btn-gplus:active,.btn-gplus:hover {
+  background: #4aa1f3;
+  color:white;
+}ooter .container .text-muted {
+margin: 20px 0;
+}
+
+.footer > .container {
+padding-right: 15px;
+padding-left: 15px;
+}
+.btn-facebook{
+  background: #4aa1f3;
+  border-radius: 0;
+  color: white;
+  width: 100px;
+}
+.btn-facebook:link, .btn-facebook:visited{
+  color: white;
+  text-decoration: none;
+  background: #e44b34;
+}
+.btn-facebook:active,.btn-facebook:hover {
+  background: #e44b34;
+  color:white;
+}
+.btn-gplus{
+  background: #e44b34;
+  border-radius: 0;
+  color: white;
+  width: 100px;
+}
+.btn-gplus:link, .btn-gplus:visited{
+  color: white;
+  text-decoration: none;
+  background: #e44b34;
+}
+.btn-gplus:active,.btn-gplus:hover {
+  background: #e44b34;
+  color:white;
+}

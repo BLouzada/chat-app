@@ -5,6 +5,10 @@ module.exports = function (_, passport, User) {
       router.get('/', this.indexPage)
       router.get('/signup', this.getSignUp)
       router.get('/home', this.homePage)
+      router.get('/auth/facebook', this.getFacebookLogin)
+      router.get('/auth/facebook/callback', this.facebookLogin)
+      router.get('/auth/google', this.getGoogleLogin)
+      router.get('/auth/google/callback', this.googleLogin)
       router.post('/', User.LoginValidation, this.postLogin)
       router.post('/signup', User.SignupValidation, this.postSignUp)
     },
@@ -19,6 +23,22 @@ module.exports = function (_, passport, User) {
     homePage: function (req, res) {
       return res.render('home')
     },
+    getFacebookLogin: passport.authenticate('facebook', {
+      scope: 'email'
+    }),
+    facebookLogin: passport.authenticate('facebook', {
+      successRedirect: '/home',
+      failureRedirect: '/',
+      failureFlash: true
+    }),
+    getGoogleLogin: passport.authenticate('google', {
+      scope: ['https://www.googleapis.com/auth/plus.login', 'https://www.googleapis.com/auth/plus.profile.emails.read']
+    }),
+    googleLogin: passport.authenticate('google', {
+      successRedirect: '/home',
+      failureRedirect: '/',
+      failureFlash: true
+    }),
     postSignUp: passport.authenticate('local.signup', {
       successRedirect: '/home',
       failureRedirect: '/signup',
